@@ -26,6 +26,14 @@ class CustomFooterView: UICollectionReusableView {
            self.refreshControlIndicator?.transform = CGAffineTransform.init(scaleX: 0.0, y: 0.0)
        }
     
+    
+    func setTransform(inTransform:CGAffineTransform, scaleFactor:CGFloat) {
+        if isAnimatingFinal {
+            return
+        }
+        self.currentTransform = inTransform
+        self.refreshControlIndicator?.transform = CGAffineTransform.init(scaleX: scaleFactor, y: scaleFactor)
+    }
     func startAnimate() {
         self.isAnimatingFinal = true
         self.refreshControlIndicator?.startAnimating()

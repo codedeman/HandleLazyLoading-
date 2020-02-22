@@ -139,7 +139,6 @@
 				188ADB0C23F7E68C00444140 /* Models */,
 				188ADB0B23F7E5AA00444140 /* DataManager */,
 				188ADAD923F7D93000444140 /* AppDelegate.swift */,
-				188ADB3823F954C900444140 /* SearchViewController.swift */,
 				188ADADB23F7D93000444140 /* SceneDelegate.swift */,
 				188ADADD23F7D93000444140 /* ViewController.swift */,
 				188ADADF23F7D93000444140 /* Main.storyboard */,
@@ -233,6 +232,7 @@
 			children = (
 				188ADB2F23F941FB00444140 /* SearchViewController+Webservice.swift */,
 				188ADB3123F9452B00444140 /* SearchViewController+CollectionView.swift */,
+				188ADB3823F954C900444140 /* SearchViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";

@@ -11,12 +11,10 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class SearchViewController: UICollectionViewController {
+  
     @IBOutlet weak var searchTextField: SearchTextField!
     var footerView:CustomFooterView?
     var searches = FlickrSearchResults()
-    
-    var cell = FlickrPhotoCell.self
-    
     let flickr = Flickr()
     var itemsPerRow: CGFloat = 3
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
@@ -37,12 +35,16 @@ class SearchViewController: UICollectionViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    func photoForIndexPath(indexPath: IndexPath) -> FlickrPhoto {
+        return searches.searchResults[(indexPath as NSIndexPath).row]
+    }
 
     
 }
 
-extension SearchViewController:UITextViewDelegate{
-
+// MARK: UITextFieldDelegate
+extension SearchViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -61,3 +63,9 @@ extension SearchViewController:UITextViewDelegate{
         return true
     }
 }
+
+
+
+
+
+

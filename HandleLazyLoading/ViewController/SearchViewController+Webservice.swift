@@ -8,14 +8,15 @@
 
 import Foundation
 
-extension SearchViewController{
-
+extension SearchViewController {
+    
     func callSearchApi (searchText: String, pageNo: Int) {
-
-        flickr.searchFlickrForTerm(searchText, page: pageNo) { (results, paging, error) in
+        // use Flickr wrapper class to search Flickr for photos that match the given search term asynchronously
+        // when search complets, the completion block will be called with the result set of FlickrPhoto objects and error (if there is one)
+        flickr.searchFlickrForTerm(searchText, page: pageNo) { results, paging, error in
             
             self.searchTextField.stopAnimating()
-
+            
             if let paging = paging, paging.currentPage == 1 {
                 ImageDownloadManager.shared.cancelAll()
                self.searches.searchResults.removeAll()
@@ -30,23 +31,19 @@ extension SearchViewController{
             }
             
             if let results = results {
-
+                // 3
+                // results get logged and added to the front of the searches array
                 print("Found \(results.searchResults.count) matching \(results.searchTerm)")
                 self.searches.searchResults.append(contentsOf: results.searchResults)
+                
                 for photo in self.searches.searchResults {
                     print("URL:  \(photo.flickrImageURL()?.absoluteString ?? "")")
                 }
                 self.paging = paging
                 self.collectionView?.reloadData()
             }
-            
             self.loadMore = false
-
-            
-            
-            
-            
         }
-    
     }
+    
 }
